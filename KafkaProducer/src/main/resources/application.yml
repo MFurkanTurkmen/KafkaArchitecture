@@ -1,0 +1,14 @@
+server:
+  port: 8081
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092,localhost:9094,localhost:9093
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.trusted.packages: '*'
+        spring.json.type.mapping: Product:com.mft.kafkaproducer.dto.ProductDto
+        acks: all                    # Tüm replica'lardan onay bekler
+        min.insync.replicas: 1
+
